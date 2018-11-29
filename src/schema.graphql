@@ -1,0 +1,27 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID! 
+  title: String!
+  body: String!
+  published: Boolean!
+  author: User!
+}
+
+type Comment {
+  id: ID! 
+  text: String!
+  author: User!
+  post: Post!
+}
+
+type Query {
+    users(query: String): [User!]!
+    posts(query: String): [Post!]!
+}
+
