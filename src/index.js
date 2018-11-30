@@ -12,9 +12,12 @@ const server = new GraphQLServer({
         Subscription
     },
     typeDefs: './src/schema.graphql',
-    context: {
-        db,
-        prisma
+    context(request) {
+        return {
+            db,
+            prisma,
+            request
+        }
     }
 });
 
