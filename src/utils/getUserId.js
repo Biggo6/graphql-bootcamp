@@ -13,6 +13,7 @@ const getUserId = (req, requireAuth = true) => {
         throw new Error('Authorization required');
     }
 
+    return null;
     
 }
 

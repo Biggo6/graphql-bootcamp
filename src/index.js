@@ -1,16 +1,10 @@
 import { GraphQLServer } from 'graphql-yoga';
-import Query from './resolvers/Query';
-import Mutation from './resolvers/Mutation';
-import Subscription from './resolvers/Subscription';
+import { resolvers, fragmentReplacements } from './resolvers/index'
 import db from './db';
 import prisma from './prisma';
 
 const server = new GraphQLServer({
-    resolvers: {
-        Query,
-        Mutation,
-        Subscription
-    },
+    resolvers,
     typeDefs: './src/schema.graphql',
     context(request) {
         return {
@@ -18,7 +12,8 @@ const server = new GraphQLServer({
             prisma,
             request
         }
-    }
+    },
+    fragmentReplacements
 });
 
 
