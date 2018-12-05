@@ -2,7 +2,11 @@ import getUserId from "../utils/getUserId";
 
 const Query = {
     async users(parent, args, {db, prisma}, info) {
-        const opArgs = {};
+        const opArgs = {
+            first: args.first,
+            skip: args.skip,
+            after: args.after
+        };
         if(args.query) {
             opArgs.where = {
                 OR: [{
@@ -78,7 +82,10 @@ const Query = {
         const opArgs = {
             where: {
                 published: true
-            }
+            },
+            first: args.first,
+            skip: args.skip,
+            after: args.after
         };
         if(args.query) {
             opArgs.where.OR = {

@@ -4,6 +4,8 @@ type User {
   email: String
   password: String!
   posts: [Post!]!
+  updatedAt: String!
+  createdAt: String!
 }
 
 type Post {
@@ -22,8 +24,8 @@ type Comment {
 }
 
 type Query {
-    users(query: String): [User!]!
-    posts(query: String): [Post!]!
+    users(query: String, first: Int, skip: Int, after: String): [User!]!
+    posts(query: String, first: Int, skip: Int, after: String): [Post!]!
     comments(query: String): [Comment!]!
     myPosts(query: String): [Post!]!
     post(id: ID!): Post!
@@ -37,7 +39,8 @@ input CreateUserInput {
 
 input UpdateUserInput {
   name: String,
-  email: String
+  email: String,
+  password: String
 }
 
 input CreatePostInput {
@@ -100,9 +103,11 @@ type PostSubscriptionPayload {
   node: Post
 }
 
+
 type Subscription {
   comment(postId: ID!): CommentSubscriptionPayload
   post: PostSubscriptionPayload
+  myPost: PostSubscriptionPayload
 }
 
 
