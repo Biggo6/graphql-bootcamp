@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const generateToken = (userId) => {
     jwt.sign({
         userId: userId
-    }, 'izwebishot!', {
+    }, process.env.JWT_SECRET, {
         expiresIn: '7 days'
     })
 }

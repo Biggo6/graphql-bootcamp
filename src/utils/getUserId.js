@@ -6,7 +6,7 @@ const getUserId = (req, requireAuth = true) => {
      
     if(header) {
         const token  = header.replace('Bearer ', '');
-        const decode = jwt.verify(token, 'izwebishot!'); 
+        const decode = jwt.verify(token, process.env.JWT_SECRET); 
         return decode.userId;
     }
 
