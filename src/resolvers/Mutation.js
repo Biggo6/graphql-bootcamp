@@ -31,7 +31,7 @@ const Mutation = {
 
     async createUser(parent, args, { prisma }, info) {
 
-        const hashPassword = await hashPassword(args.data.password);
+        const hashPasswordx = await hashPassword(args.data.password);
 
         const email = await prisma.exists.User({
             email: args.data.email
@@ -44,7 +44,7 @@ const Mutation = {
         const user = await prisma.mutation.createUser({
             data: {
                 ...args.data,
-                password: hashPassword
+                password: hashPasswordx
             }
         });
 

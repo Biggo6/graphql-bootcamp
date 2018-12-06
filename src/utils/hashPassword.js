@@ -5,8 +5,8 @@ const hashPassword = (password) => {
         throw new Error('Password must be 9 characters or longer')
     }
 
-    const hashPassword = bcrypt.hash(password, 10);
-    return hashPassword;
+    const hashPasswordx = bcrypt.hash(password, 10);
+    return hashPasswordx;
 }
 
 export { hashPassword as default }
