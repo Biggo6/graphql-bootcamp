@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import { GraphQLServer } from 'graphql-yoga';
 import { resolvers, fragmentReplacements } from './resolvers/index'
 import db from './db';
@@ -17,4 +18,6 @@ const server = new GraphQLServer({
 });
 
 
-server.start(() => console.log('Listening...'))
+server.start({
+    port: process.env.PORT || 4000
+}, () => console.log('Listening...'))

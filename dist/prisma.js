@@ -1,14 +1,22 @@
-import { Prisma } from 'prisma-binding';
-import { fragmentReplacements } from './resolvers/index';
+'use strict';
 
-const prisma = new Prisma({
-    typeDefs: 'src/generated/prisma.graphql',
-    endpoint: process.env.PRISMA_ENDPOINT,
-    secret: 'izwebishot!',
-    fragmentReplacements
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+exports.default = undefined;
+
+var _prismaBinding = require('prisma-binding');
+
+var _index = require('./resolvers/index');
+
+var prisma = new _prismaBinding.Prisma({
+   typeDefs: 'src/generated/prisma.graphql',
+   endpoint: process.env.PRISMA_ENDPOINT,
+   secret: 'izwebishot!',
+   fragmentReplacements: _index.fragmentReplacements
 });
 
-export { prisma as default };
+exports.default = prisma;
 
 // function log(data, ind=4) {
 //     console.log(JSON.stringify(data, null, ind));
@@ -22,7 +30,7 @@ export { prisma as default };
 // // });
 
 // const createPOstForUser = async (authorId, data) => {
-   
+
 //     const userExists = await prisma.exists.User({
 //         id: authorId
 //     });
@@ -30,7 +38,7 @@ export { prisma as default };
 //     if(!userExists) {
 //         throw new Error('User not found')
 //     }
-   
+
 //     const post = await prisma.mutation.createPost({
 //         data: {
 //             ...data,
